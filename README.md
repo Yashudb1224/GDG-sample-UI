@@ -36,7 +36,7 @@ Each page is a grid of modular tiles of different sizes. Every tile holds one id
 - Results grouped by month, with a live count and an empty state
 - **Event detail page** designed as a ticket with a tear-off stub. It shows:
   - date, time and venue (or online details)
-  - a registration link and an "Add to calendar" menu (Google Calendar, Outlook.com or a .ics file)
+  - a registration link
   - the agenda, a countdown and what to bring
   - a recap instead of registration for past events
 

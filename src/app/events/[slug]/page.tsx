@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { AddToCalendar } from "@/components/AddToCalendar";
 import { Countdown } from "@/components/Countdown";
 import { EventCard } from "@/components/EventCard";
 import { BG } from "@/lib/site";
@@ -34,7 +33,7 @@ export default async function EventDetailPage({ params }: Props) {
 
   return (
     <div className="space-y-12 pt-8 sm:pt-10">
-      <Link href="/events" className="inline-flex min-h-11 items-center gap-2 font-semibold underline-offset-4 hover:underline">
+      <Link href="/events" className="nb-btn bg-surface">
         <span aria-hidden="true">←</span> All events
       </Link>
 
@@ -98,7 +97,6 @@ export default async function EventDetailPage({ params }: Props) {
                   <span aria-hidden="true">↗</span>
                 </a>
               )}
-              <AddToCalendar event={event} />
               <p className="text-center text-xs text-muted">Registration opens on the chapter&apos;s GDG community page.</p>
             </div>
           )}
