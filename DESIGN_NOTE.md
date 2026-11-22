@@ -35,13 +35,13 @@ All three are open source (SIL OFL) and loaded through `next/font`, so there is 
 
 - **Event pages are tickets:** a coloured main panel and a tear-off stub with a dashed perforation and punched notches. The stub holds what you need to attend: date, time, venue, "Register" and "Add to calendar".
 - **Team members are ID badges** with a lanyard slot and a generated geometric avatar, which avoids photos of real people.
-- **An engineering-notebook backdrop:** faint graph paper with large Google-colour shapes drawn as thick 3D chips (extruded side, light sheen) at the screen edges. On desktop they drift a few pixels with the mouse at different depths. They fade toward the centre so text stays readable, and they're static on touch devices and for reduced motion.
+- **An engineering-notebook backdrop:** faint graph paper with large Google-colour shapes drawn as thick 3D chips (extruded side, light sheen) at the screen edges. They drift a few pixels with the mouse at different depths, and as you scroll each one has its own small, bounded move: the disc's dashed ring turns, the code tile sways, the triangle floats. They fade toward the centre so text stays readable, and stay still for reduced motion.
 - **Two optional touches from the brief:** a live event countdown and light/dark themes.
 - **Motion stays quiet:**
   - the hero enters once on load
   - cards lift on hover and sink into their shadow when pressed
   - transitions are 200 ms or shorter
-  - nothing animates on scroll, and everything respects reduced motion
+  - content never animates on scroll (only the background shapes do), and everything respects reduced motion
 
 ## How the GDG brand guidelines were followed
 
