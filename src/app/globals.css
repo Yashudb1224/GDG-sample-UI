@@ -1,26 +1,247 @@
 @import "tailwindcss";
 
+/* Dark mode follows the data-theme attribute set on <html> (see ThemeScript). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ---------- Design tokens ---------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Google colours: fixed in both themes so they stay recognisable */
+  --g-blue: #4285f4;
+  --g-red: #ea4335;
+  --g-yellow: #fbbc04;
+  --g-green: #34a853;
+  /* Text on a Google colour is always this ink (contrast >= 4.8:1 on all four) */
+  --on-color: #111111;
+
+  /* Light theme */
+  --bg: #faf7f0;
+  --surface: #ffffff;
+  --surface-2: #f1ede3;
+  --ink: #111111;
+  --muted: #4b4a46;
+  --line: #111111;
+  --dot: rgba(17, 17, 17, 0.06);
+  --grid-major: rgba(66, 133, 244, 0.16);
+  --focus: #1a5fd6;
+
+  /* Motion: strong ease-out for UI, short durations */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --dur-press: 120ms;
+  --dur-hover: 180ms;
+
+  --radius: 14px;
+  --border: 2.5px;
+  --shadow-sm: 3px 3px 0 var(--line);
+  --shadow: 5px 5px 0 var(--line);
+  --shadow-lg: 8px 8px 0 var(--line);
+
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #111215;
+  --surface: #1b1d22;
+  --surface-2: #24272e;
+  --ink: #f3f1ea;
+  --muted: #b8b5ad;
+  --line: #e9e6dd;
+  --dot: rgba(233, 230, 221, 0.05);
+  --grid-major: rgba(138, 180, 255, 0.13);
+  --focus: #8ab4ff;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-on-color: var(--on-color);
+  --color-gblue: var(--g-blue);
+  --color-gred: var(--g-red);
+  --color-gyellow: var(--g-yellow);
+  --color-ggreen: var(--g-green);
+  --font-sans: var(--nf-body);
+  --font-display: var(--nf-display);
+  --font-mono: var(--nf-code);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ---------- Base ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Engineering-notebook graph paper: fine 24px squares with a stronger line every 4 */
+body {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(var(--dot) 1px, transparent 1px),
+    linear-gradient(90deg, var(--dot) 1px, transparent 1px);
+  background-size:
+    96px 96px,
+    96px 96px,
+    24px 24px,
+    24px 24px;
+  background-position: -1px -1px;
+  color: var(--ink);
+  font-family: var(--nf-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Backdrop shapes fade out toward the middle of the screen, so text that sits
+   directly on the page background (section headings, labels) stays readable. */
+.bg-art {
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, transparent 35%, #000 85%);
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, transparent 35%, #000 85%);
+}
+:root[data-theme="dark"] .bg-art {
+  opacity: 0.8;
+}
+@media (max-width: 767px) {
+  .bg-art {
+    opacity: 0.4;
+  }
+  :root[data-theme="dark"] .bg-art {
+    opacity: 0.35;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--g-yellow);
+  color: var(--on-color);
+}
+
+/* ---------- Hero entrance: plays once on load ----------
+   Lead (headline) travels furthest; support follows with less travel;
+   decoration only fades. Non-uniform delays, total well under a second. */
+@keyframes enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--enter-y, 14px));
+  }
+}
+@keyframes enter-fade {
+  from {
+    opacity: 0;
+  }
+}
+[data-enter] {
+  animation: enter-up 560ms var(--ease-out) both;
+  animation-delay: var(--enter-delay, 0ms);
+}
+[data-enter="fade"] {
+  animation-name: enter-fade;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  /* Keep gentle opacity changes, drop movement */
+  [data-enter] {
+    animation-name: enter-fade;
+    animation-duration: 200ms;
+  }
+  .nb-lift,
+  .nb-btn {
+    transition: none !important;
+  }
+}
+
+/* ---------- Neo-brutal components ---------- */
+@layer components {
+  .nb-card {
+    background: var(--surface);
+    border: var(--border) solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  /* Cards that lift on hover (real pointers only) and on keyboard focus */
+  .nb-lift {
+    transition:
+      transform var(--dur-hover) var(--ease-out),
+      box-shadow var(--dur-hover) var(--ease-out);
+  }
+  .nb-lift:has(:focus-visible) {
+    transform: translate(-3px, -3px);
+    box-shadow: var(--shadow-lg);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .nb-lift:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+  /* Pressing a card pushes it into its shadow */
+  .nb-lift:active {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 var(--line);
+    transition-duration: var(--dur-press);
+  }
+
+  .nb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.6rem 1.15rem;
+    font-weight: 700;
+    border: var(--border) solid var(--line);
+    border-radius: 999px;
+    box-shadow: var(--shadow-sm);
+    transition:
+      transform var(--dur-hover) var(--ease-out),
+      box-shadow var(--dur-hover) var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .nb-btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 var(--line);
+    }
+  }
+  /* Press: button sinks into its shadow, fast */
+  .nb-btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--line);
+    transition-duration: var(--dur-press);
+  }
+
+  .nb-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.6rem;
+    font-family: var(--nf-code), monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--ink);
+  }
+  .notch {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    border: var(--border) solid var(--line);
+    background: var(--bg);
+  }
+
+  .nb-tag-on-color {
+    border-color: var(--on-color);
+    background: rgba(255, 255, 255, 0.35);
+    color: var(--on-color);
+  }
 }
