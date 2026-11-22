@@ -2,7 +2,7 @@
 
 A design and working frontend for the **GDG on Campus RV College of Engineering** community website, built for the *Interface Unlocked* UI Design Challenge. It covers the three pages in the brief (**Home**, **Events** and **Team**) on desktop and phone, in light and dark themes.
 
-**Live demo:** _add your Vercel link here_
+**Live demo:** https://gdgsample.vercel.app
 **Design note:** [DESIGN_NOTE.md](DESIGN_NOTE.md)
 
 ## The idea: bento + neo-brutalism
@@ -62,8 +62,8 @@ Each page is a grid of modular tiles of different sizes. Every tile holds one id
 Requires Node.js 20.19+ or 22+ (Node 22 LTS recommended).
 
 ```bash
-git clone <your-repo-url>
-cd gdg-rvce-site
+git clone https://github.com/Yashudb1224/GDG-sample-UI.git
+cd GDG-sample-UI
 npm install
 npm run dev
 ```
