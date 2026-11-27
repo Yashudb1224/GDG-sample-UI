@@ -195,9 +195,21 @@ export default function HomePage() {
                 <span aria-hidden="true" className="font-mono text-lg">↗</span>
               </div>
               <h3 className="font-display text-xl font-bold">
-                <a href={c.href} className="after:absolute after:inset-0 after:rounded-[var(--radius)] after:content-['']">
-                  {c.label}
-                </a>
+                {c.href.startsWith("http") ? (
+                  <a
+                    href={c.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="after:absolute after:inset-0 after:rounded-[var(--radius)] after:content-['']"
+                  >
+                    {c.label}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                ) : (
+                  <a href={c.href} className="after:absolute after:inset-0 after:rounded-[var(--radius)] after:content-['']">
+                    {c.label}
+                  </a>
+                )}
               </h3>
               <p className="font-mono text-xs text-muted">{c.handle}</p>
               <p className="text-sm text-muted">{c.blurb}</p>

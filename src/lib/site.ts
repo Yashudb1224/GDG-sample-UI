@@ -26,10 +26,24 @@ export const NAV = [
 
 // Community channels. Text labels only: no third-party logos (brand rule).
 export const COMMUNITY_LINKS = [
-  { label: "GitHub", handle: "@gdg-rvce-sample", href: "#", blurb: "Workshop code, starter repos and open projects.", color: "gblue" },
-  { label: "Discord", handle: "gdg-rvce-sample", href: "#", blurb: "Ask doubts, find teammates, share what you built.", color: "ggreen" },
-  { label: "Instagram", handle: "@gdgrvce.sample", href: "#", blurb: "Event photos, reels and announcements.", color: "gred" },
-  { label: "LinkedIn", handle: "GDG RVCE (sample)", href: "#", blurb: "Recaps, speaker spotlights and opportunities.", color: "gyellow" },
+  // Real, public chapter profiles
+  {
+    label: "Instagram",
+    handle: "@gdg_rvce",
+    href: "https://www.instagram.com/gdg_rvce/",
+    blurb: "Event photos, reels and announcements.",
+    color: "gred",
+  },
+  {
+    label: "LinkedIn",
+    handle: "Google Developer Groups RVCE",
+    href: "https://www.linkedin.com/company/google-developer-groups-rvce/",
+    blurb: "Recaps, speaker spotlights and opportunities.",
+    color: "gblue",
+  },
+  // Sample channels (no public link yet)
+  { label: "GitHub", handle: "@gdg-rvce-sample", href: "#", blurb: "Workshop code, starter repos and open projects.", color: "ggreen" },
+  { label: "Discord", handle: "gdg-rvce-sample", href: "#", blurb: "Ask doubts, find teammates, share what you built.", color: "gyellow" },
 ] as const;
 
 export type GColor = "gblue" | "gred" | "gyellow" | "ggreen";

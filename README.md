@@ -45,7 +45,7 @@ Each page is a grid of modular tiles of different sizes. Every tile holds one id
 - Chapter leads shown in full; other cards expand in place to show the bio and links
 
 **Across the site**
-- Light and dark themes: follows the system setting, with a toggle that remembers the choice
+- Light and dark themes: opens in light mode, with a toggle that remembers the visitor's choice
 - Skip link, visible focus rings, labelled controls, and tap targets of at least 44 px
 - Animations respect `prefers-reduced-motion`
 - No analytics, RSVP or interest counters, attendee lists, comments or chat
@@ -107,4 +107,4 @@ src/
 - GDG logo: the official lockup from the [chapter's GDG community page](https://gdg.community.dev/gdg-on-campus-rv-college-of-engineering-bengaluru-india/), used unaltered.
 - No other third-party logos and no photos are used.
 
-All names, bios, events, venues and profile links are made-up sample content. This is a community site and not an official Google product.
+All names, bios, events, venues and team profile links are made-up sample content. The chapter's Instagram, LinkedIn and GDG community page links are real public profiles. This is a community site and not an official Google product.
