@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { NAV, SITE } from "@/lib/site";
-import { LogoPlaceholder } from "./LogoPlaceholder";
+import { Logo } from "./Logo";
 
 export function Footer() {
   return (
@@ -14,7 +14,7 @@ export function Footer() {
       </div>
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.5fr_1fr_1fr]">
         <div className="space-y-3">
-          <LogoPlaceholder />
+          <Logo size="footer" />
           <p className="max-w-sm text-sm text-muted">
             {SITE.name}, {SITE.location}. A student-run chapter of Google Developer Groups on Campus. This
             community site is not an official Google product.
@@ -35,8 +35,9 @@ export function Footer() {
         <div>
           <h2 className="mb-3 font-mono text-xs font-semibold uppercase tracking-wider text-muted">Credits</h2>
           <p className="text-sm text-muted">
-            Type: Space Grotesk, Inter and JetBrains Mono (SIL Open Font License, via Google Fonts). Icons drawn
-            inline. All names, events and links are sample content.
+            GDG logo: the official lockup from the chapter&apos;s GDG community page, used unaltered. Type: Space
+            Grotesk, Inter and JetBrains Mono (SIL Open Font License, via Google Fonts). Icons drawn inline. All
+            names, events and links are sample content.
           </p>
         </div>
       </div>

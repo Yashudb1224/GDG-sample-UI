@@ -94,7 +94,7 @@ src/
 
 ## Swapping in official assets
 
-- **Logo:** replace `src/components/LogoPlaceholder.tsx` with the official GDG logo exactly as supplied (no recolouring or stretching, with clear space around it).
+- **Logo:** the official GDG lockup lives at `public/brand/gdg-lockup-1line-black.svg` and is placed by `src/components/Logo.tsx`. Replace the file with any newer official version exactly as supplied (no recolouring, cropping or stretching).
 - **Chapter name and links:** edit `SITE` in `src/lib/site.ts`.
 - **Content:** edit `src/data/events.ts` and `src/data/team.ts`.
 
@@ -104,6 +104,7 @@ src/
 - Icons and illustrations: hand-drawn inline SVG; avatars are generated from initials.
 - Libraries: Next.js, React and Tailwind CSS (MIT).
 - Motion and copy principles adapted from [emilkowalski/skills](https://github.com/emilkowalski/skills) and [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill).
-- No third-party logos or photos are used.
+- GDG logo: the official lockup from the [chapter's GDG community page](https://gdg.community.dev/gdg-on-campus-rv-college-of-engineering-bengaluru-india/), used unaltered.
+- No other third-party logos and no photos are used.
 
 All names, bios, events, venues and profile links are made-up sample content. This is a community site and not an official Google product.

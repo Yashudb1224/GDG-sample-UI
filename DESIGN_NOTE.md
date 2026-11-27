@@ -46,7 +46,7 @@ All three are open source (SIL OFL) and loaded through `next/font`, so there is 
 ## How the GDG brand guidelines were followed
 
 - **Colour:** built around the four Google colours, used consistently, with readable text on every one.
-- **Logo:** a plain placeholder, as the brief instructs, kept in one component so the official logo can replace it unaltered and with clear space.
+- **Logo:** the official GDG lockup, as published on the chapter's GDG community page, used exactly as supplied: never recoloured, cropped or stretched, with clear space around it. On the dark theme it sits on its own white label instead of being recoloured. On phones the whole lockup scales down rather than being cut to just the mark. "on Campus · RVCE" is separate text beside it, not an edit to the logo.
 - **Name:** "GDG on Campus RV College of Engineering", as listed on the chapter's GDG community page. It is set in one place in the code.
 - **Spirit:** friendly, developer-focused copy. The footer states that this is a community site and not an official Google product.
 - **Third-party material:** no other companies' logos. Social platforms appear as text labels only. Fonts are credited and every illustration is original SVG.

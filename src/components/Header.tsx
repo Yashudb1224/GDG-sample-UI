@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { NAV, SITE } from "@/lib/site";
-import { LogoPlaceholder } from "./LogoPlaceholder";
+import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 
 const ACTIVE_COLORS = ["bg-gblue", "bg-gred", "bg-ggreen"];
@@ -29,10 +29,10 @@ export function Header() {
     <header className="sticky top-0 z-40 px-4 pt-3 sm:px-6">
       <div className="nb-card mx-auto flex max-w-6xl items-center justify-between gap-3 px-3 py-2 sm:px-4">
         <Link href="/" aria-label={`${SITE.name} home`} className="flex min-h-11 shrink-0 items-center rounded-lg">
-          <LogoPlaceholder />
+          <Logo />
         </Link>
 
-        <nav aria-label="Main" className="hidden md:block">
+        <nav aria-label="Main" className="hidden lg:block">
           <ul className="flex items-center gap-1">
             {NAV.map((item, i) => {
               const active = isActive(item.href);
@@ -62,7 +62,7 @@ export function Header() {
           </a>
           <button
             type="button"
-            className="grid h-11 w-11 place-items-center rounded-full border-[2.5px] border-line bg-surface md:hidden"
+            className="grid h-11 w-11 place-items-center rounded-full border-[2.5px] border-line bg-surface lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -76,7 +76,7 @@ export function Header() {
       </div>
 
       {open && (
-        <nav id="mobile-nav" aria-label="Main" className="nb-card mx-auto mt-2 max-w-6xl p-2 md:hidden">
+        <nav id="mobile-nav" aria-label="Main" className="nb-card mx-auto mt-2 max-w-6xl p-2 lg:hidden">
           <ul className="grid gap-1">
             {NAV.map((item, i) => {
               const active = isActive(item.href);
