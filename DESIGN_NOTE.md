@@ -35,7 +35,7 @@ All three are open source (SIL OFL) and loaded through `next/font`, so there is 
 
 - **Event pages are tickets:** a coloured main panel and a tear-off stub with a dashed perforation and punched notches. The stub holds what you need to attend: date, time, venue and one "Register" action.
 - **Team members are ID badges** with a lanyard slot and a generated geometric avatar, which avoids photos of real people.
-- **An engineering-notebook backdrop:** faint graph paper with large Google-colour shapes drawn as thick 3D chips (extruded side, light sheen) at the screen edges. They drift a few pixels with the mouse at different depths, and as you scroll each one has its own small, bounded move: the disc's dashed ring turns, the code tile sways, the triangle floats. They fade toward the centre so text stays readable, and stay still for reduced motion.
+- **An engineering-notebook backdrop:** faint graph paper with large Google-colour shapes drawn as thick 3D chips (extruded side, light sheen) at the screen edges. They drift a few pixels with the mouse at different depths, and as you scroll each one has its own small, bounded move: the disc's dashed ring turns, the blue `< >` code brackets sway, the triangle floats. They fade toward the centre so text stays readable, and stay still for reduced motion.
 - **Two optional touches from the brief:** a live event countdown and light/dark themes.
 - **Motion stays quiet:**
   - the hero enters once on load
