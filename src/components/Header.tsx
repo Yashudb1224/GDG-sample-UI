@@ -27,6 +27,12 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 px-4 pt-3 sm:px-6">
+      {/* Frosted backdrop: blurs and tints whatever scrolls behind the header strip,
+          fading out just below the bar so there's no hard edge */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 -bottom-4 top-0 -z-10 bg-bg/70 backdrop-blur-md [-webkit-mask-image:linear-gradient(to_bottom,#000_70%,transparent)] [mask-image:linear-gradient(to_bottom,#000_70%,transparent)]"
+      />
       <div className="nb-card mx-auto flex max-w-6xl items-center justify-between gap-3 px-3 py-2 sm:px-4">
         <Link href="/" aria-label={`${SITE.name} home`} className="flex min-h-11 shrink-0 items-center rounded-lg">
           <Logo />
