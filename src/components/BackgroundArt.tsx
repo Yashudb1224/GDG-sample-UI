@@ -41,7 +41,24 @@ function Chip({ d, color, children }: { d: string; color: keyof typeof SHADE; ch
 
 // Shape outlines in a 0..200 box (the viewBox leaves room for the extrusion)
 const CIRCLE = "M100 4 A96 96 0 1 1 99.99 4 Z";
-const SQUARE = "M42 6 H158 A36 36 0 0 1 194 42 V158 A36 36 0 0 1 158 194 H42 A36 36 0 0 1 6 158 V42 A36 36 0 0 1 42 6 Z";
+// A "< >" code bracket pair drawn as two rounded strokes, single colour
+const BRACKETS = "M80 38 L26 100 L80 162 M120 38 L174 100 L120 162";
+
+/** Like Chip, but for stroked line art: ink outline, extruded side, coloured face. */
+function StrokeChip({ d, color, width = 26 }: { d: string; color: keyof typeof SHADE; width?: number }) {
+  const [face, side] = SHADE[color];
+  const line = { fill: "none", strokeLinecap: "round", strokeLinejoin: "round" } as const;
+  return (
+    <>
+      <path d={d} {...line} transform={`translate(${EXTRUDE} ${EXTRUDE})`} stroke={STROKE} strokeWidth={width + 6} />
+      {Array.from({ length: EXTRUDE }, (_, i) => (
+        <path key={i} d={d} {...line} transform={`translate(${EXTRUDE - i} ${EXTRUDE - i})`} stroke={side} strokeWidth={width} />
+      ))}
+      <path d={d} {...line} stroke={STROKE} strokeWidth={width + 6} />
+      <path d={d} {...line} stroke={face} strokeWidth={width} />
+    </>
+  );
+}
 const TRIANGLE = "M100 8 L192 184 L8 184 Z";
 const PLUS = "M70 8 H130 V70 H192 V130 H130 V192 H70 V130 H8 V70 H70 Z";
 const SMALL_SQUARE = "M26 14 H74 A12 12 0 0 1 86 26 V74 A12 12 0 0 1 74 86 H26 A12 12 0 0 1 14 74 V26 A12 12 0 0 1 26 14 Z";
@@ -141,12 +158,10 @@ export function BackgroundArt() {
         </svg>
       </div>
 
-      {/* Right edge: blue tile with a code mark */}
-      <div data-depth="1.6" data-bob="14" className="absolute -right-20 top-[38%] hidden h-56 w-56 will-change-transform md:block md:h-72 md:w-72">
-        <svg data-sway="7" className="h-full w-full rotate-12" viewBox={vb}>
-          <Chip d={SQUARE} color="blue">
-            <path d="M60 100 L84 76 M60 100 L84 124 M140 100 L116 76 M140 100 L116 124" stroke={STROKE} strokeWidth="7" strokeLinecap="round" />
-          </Chip>
+      {/* Right edge: blue < > code brackets */}
+      <div data-depth="1.6" data-bob="14" className="absolute right-1 top-[44%] hidden h-36 w-36 will-change-transform md:block xl:right-3 xl:h-44 xl:w-44 2xl:h-56 2xl:w-56">
+        <svg data-sway="6" className="h-full w-full -rotate-3 overflow-visible" viewBox={vb}>
+          <StrokeChip d={BRACKETS} color="blue" />
         </svg>
       </div>
 
