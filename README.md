@@ -104,7 +104,7 @@ src/
 - Icons and illustrations: hand-drawn inline SVG; avatars are generated from initials.
 - Libraries: Next.js, React and Tailwind CSS (MIT).
 - Motion and copy principles adapted from [emilkowalski/skills](https://github.com/emilkowalski/skills) and [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill).
-- GDG logo: the official lockup from the [chapter's GDG community page](https://gdg.community.dev/gdg-on-campus-rv-college-of-engineering-bengaluru-india/), used unaltered.
+- GDG logo: the official lockup from the [chapter's GDG community page](https://gdg.community.dev/gdg-on-campus-rv-college-of-engineering-bengaluru-india/), used unaltered. The browser tab icon (`src/app/icon.png`, `apple-icon.png`) is rendered from that same file, cropped to the mark on a white tile.
 - No other third-party logos and no photos are used.
 
 All names, bios, events, venues and team profile links are made-up sample content. The chapter's Instagram, LinkedIn and GDG community page links are real public profiles. This is a community site and not an official Google product.
